@@ -1,0 +1,315 @@
+Arreglos Unidimensionales
+
+
+ 2) Desarrollar un algoritmo que permita mostrar un arreglo de enteros con
+sus valores a la mitad. Ejemplo: Arreglo {1,2,3,4}, la computadora
+muestra: 0.5 1.0 1.5 2.0.
+
+
+import java.util.Scanner;
+class Main {
+  public static void main(String[] args) {
+    Scanner entrada= new Scanner(System.in);
+   int[] arreglo = {1,2,3,4};
+   double[] arreglo1=new double[4];
+   for (int i=0;i<arreglo.length;i++){
+     arreglo1[i]=arreglo[i]/2.0;
+   System.out.println("posicion" + i+"valor"+arreglo[i]+"valor"+arreglo1[i]);
+   }
+    
+  }
+}
+
+
+
+4) CreaR un array unidimensional con un tamaño de 10, inserta los valores
+numéricos que desees de la manera que quieras y muestra por pantalla
+la media de valores (promedio) del array. Nota: puede utilizar el método
+random de la Clase Math para generar números aleatorios al cargar el
+array.
+
+import java.util.Scanner;
+class Main {
+  public static void main(String[] args) {
+    Scanner entrada= new Scanner(System.in);
+   int[] arreglo = new int[10];
+   int cont=0;
+   double promedio;
+   for (int i=0;i<arreglo.length;i++){
+     arreglo[i]=(int) (Math.random()*50+1);
+     cont=cont+arreglo[i];
+   System.out.println("posicion" + i+"valor"+arreglo[i]);
+   }
+   promedio=cont/10.0;
+   System.out.println(promedio); 
+  }
+}
+
+
+
+
+
+6) Crear un arreglo de n posiciones y llenarlo con los números que el usuario
+desee y luego busque en el array un número ingresado por teclado.
+
+import java.util.Scanner;
+class Main {
+  public static void main(String[] args) {
+    Scanner entrada= new Scanner(System.in);
+    int n;
+    int numero;
+    System.out.println("ingrese cantidad total de numeros");
+    n=entrada.nextInt();
+
+   int[] arreglo = new int[n];
+   
+   for (int i=0;i<arreglo.length;i++){
+     System.out.println("ingrese numero");
+
+     arreglo[i]=entrada.nextInt();
+     
+     System.out.println("posicion" + i+"numero"+arreglo[i]);
+   }
+   
+  System.out.println("Que numero desea buscar?");
+  numero=entrada.nextInt();
+  for (int i=0;i<n;i++ ){
+  if (arreglo[i]==numero){
+    System.out.println("El numero se encuentra en la posicion"+i);
+    }
+
+  }
+  
+}
+}
+
+7) Desarrollar un algoritmo que permita pedir al usuario un número entero T
+y otro M. La computadora crea un arreglo de enteros de T posiciones
+cargado con los múltiplos de M y lo muestra. Ejemplo: Se ingresa 4 y 6,
+la computadora muestra: 0 6 12 18.
+
+import java.util.Scanner;
+class Main {
+  public static void main(String[] args) {
+    Scanner entrada= new Scanner(System.in);
+    int T;
+    int M;
+    
+    System.out.println("ingrese cantidad total de numeros");
+    T=entrada.nextInt();
+    int[] arreglo = new int[T];
+ 
+   System.out.println("ingrese numero");
+   M=entrada.nextInt();
+ 
+   for (int i=0;i<arreglo.length;i++){
+     arreglo[i]=i*M;
+     
+     System.out.println("posicion" + i+"numero"+arreglo[i]);
+   }
+}
+}
+
+8) Desarrollar un algoritmo que permita ingresar 5 números pertenecientes
+al arreglo A y otros 5 números pertenecientes al arreglo B. La
+computadora crea y muestra un arreglo C, donde cada posición es el
+resultado de la suma del número en la misma posición en el arreglo A con
+el número en la misma posición en el arreglo B. Ejemplo: Se ingresa 1 2
+3 4 5 y 4 7 1 3 6 la computadora muestra: 5 9 4 7 11.
+
+import java.util.Scanner;
+class Main {
+  public static void main(String[] args) {
+     Scanner entrada= new Scanner(System.in);
+        
+   int[] A = new int[5];
+   int[] B = new int[5];
+   int[] C = new int[5];
+   
+   for (int i=0;i<5;i++){
+     
+     System.out.println("Ingrese numero del arreglo A");
+     A[i]=entrada.nextInt();
+
+     System.out.println("Ingrese numero del arreglo B");
+     B[i]=entrada.nextInt();
+
+     C[i]=A[i]+B[i];
+     
+     System.out.println("posicion" + i+"A"+A[i]+"B"+B[i]+"C"+C[i]);
+   }
+   
+}
+}
+
+9) Llenar un vector con números enteros (números positivos ó negativos).
+Mostrar la cantidad de números positivos y la cantidad de números
+negativos que hay en dicho arreglo.
+
+import java.util.Scanner;
+class Main {
+  public static void main(String[] args) {
+     Scanner entrada= new Scanner(System.in);
+        
+   int n;
+   int negativos=0;
+   int positivos=0;
+    System.out.println("ingrese cantidad de numeros");
+    n=entrada.nextInt();
+
+   int[] arreglo = new int[n];
+   
+   for (int i=0;i<arreglo.length;i++){
+     System.out.println("ingrese numero");
+
+     arreglo[i]=entrada.nextInt();
+     if (arreglo[i]<0){
+       negativos=negativos+1;
+     }
+     if (arreglo[i]>0){
+       positivos=positivos+1;
+     }
+     
+    }
+   System.out.println("Positivos"+positivos+"Negativos"+negativos);
+}
+}
+
+10) Almacenar en un arreglo de n posiciones nombres de países. Implementar
+una opción que al digitar una posición muestre el dato que contiene.
+
+import java.util.Scanner;
+class Main {
+  public static void main(String[] args) {
+     Scanner entrada= new Scanner(System.in);
+        
+   int n;
+   int posicion;
+   
+    System.out.println("ingrese cantidad de numeros");
+    n=entrada.nextInt();
+    String saltoDeLinea = entrada.nextLine();
+
+   String[] arreglo = new String[n];
+   
+   for (int i=0;i<arreglo.length;i++){
+     System.out.println("ingrese pais");
+
+     arreglo[i]=entrada.nextLine();
+     }
+     
+    
+   System.out.println("Ingrese posicion a investigar");
+   posicion=entrada.nextInt();
+   System.out.println("Es el pais: "+arreglo[posicion]);
+}
+}
+
+11) Cargar un vector con números aleatorios y poner en blanco una posición
+determinada por el usuario.
+
+import java.util.Scanner;
+class Main {
+  public static void main(String[] args) {
+     Scanner entrada= new Scanner(System.in);
+        
+   int n;
+   System.out.println("ingrese la posicion que quiere dejar vacia");
+   n=entrada.nextInt();
+    
+
+   int[] arreglo = new int[10];
+   
+   for (int i=0;i<10;i++){
+     if (i!=n){
+       arreglo[i]=(int) (Math.random()*50+1);
+     }
+     System.out.println(arreglo[i]+"  ");
+    }
+     
+    
+   
+  }
+}
+
+
+13) Buscar los dos mayores de un array de N datos.
+
+import java.util.Scanner;
+class Main {
+  public static void main(String[] args) {
+     Scanner entrada= new Scanner(System.in);
+  int[] milista;
+  int m1=0;
+  int m2=0;
+  milista=crearLista();
+  mostrarLista(milista);
+  for (int i=0;i<milista.length;i++){
+    if (m1<milista[i]){
+      m2=m1;
+      m1=milista[i];
+    }
+    else {
+      if (m2<milista[i]){
+        m2=milista[i];
+      }
+    }
+
+  }
+  System.out.println("Los dos numeros mayores son"+m1+m2);
+
+ 
+
+
+  }
+  //Recordar que las funciones se definen AFUERA del public static void
+  public static int[] crearLista()
+  {
+     Scanner entrada= new Scanner(System.in);
+     int[] lista= new int[10];
+     for (int i=0;i<10;i++){
+      lista[i]=(int) (Math.random()*50+1);
+    }
+    return lista;
+  }
+
+  static void mostrarLista(int[] a)
+  {
+    System.out.print("La lista es");
+    for (int i=0;i<a.length;i++){
+      System.out.println(a[i]+"  ");
+    }
+  }
+
+}
+
+ 15) Escribir un programa en Java para realizar la búsqueda del nombre de un
+cliente en un vector que contiene 5 clientes en total. El cliente a buscar
+será ingresado por pantalla por el usuario. El algoritmo deberá devolver,
+en caso de que ese nombre exista, la posición en donde se encuentra
+dicho cliente dentro del vector. 
+
+import java.util.Scanner;
+class Main {
+  public static void main(String[] args) {
+     Scanner entrada= new Scanner(System.in);
+  int n=0;
+  String nombreBuscado;
+
+  String[] clientes={"juan","liliana","gustavo","elian","franco"};
+  System.out.print("Ingrese que nombre desea buscar");
+  nombreBuscado=entrada.nextLine();
+    for (int i=0; i<5;i++){
+      String nombrei=clientes[i];
+      nombreBuscado=nombreBuscado.toLowerCase();
+      if (nombreBuscado.equals(nombrei)){
+          System.out.print("Se encuentra en la posicion"+i);
+          n=n-1;
+      }
+      n=n+1;
+    }
+  if(n==5){
+    System.out.print("No se encontro nombre");
+  }
+ }
+}
