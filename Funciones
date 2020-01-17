@@ -1,0 +1,39 @@
+//Crear un array o arreglo unidimensional donde tú le indiques el tamaño
+//por teclado y crear una función que rellene el array o arreglo con los
+//múltiplos de un número pedido por teclado. Por ejemplo, si defino un array
+//de tamaño 5 y elijo un 3 en la función,
+//el array contendrá 3, 6, 9, 12, 15. Mostrarlos por pantalla usando otra
+//función distinta.
+
+import java.util.Scanner;
+class Main {
+  public static void main(String[] args) {
+     Scanner entrada= new Scanner(System.in);
+  int[] milista;
+  milista=crearLista();
+  System.out.println("La lista obtenida es: ");
+   mostrarLista(milista);
+
+
+  }
+  //Recordar que las funciones se definen AFUERA del public static void
+  public static int[] crearLista()
+  {
+     Scanner entrada= new Scanner(System.in);
+    int  n;
+    int[] lista= new int[5];
+    System.out.println("Ingrese un numero");
+    n=entrada.nextInt();
+    for (int i=0;i<5;i++){
+      lista[i]=(i+1)*n;
+    }
+    return lista;
+  }
+
+  static void mostrarLista(int[] a)
+  {
+    for (int i=0;i<a.length;i++){
+      System.out.println(a[i]+"  ");
+    }
+  }
+}
