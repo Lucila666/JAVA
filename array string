@@ -1,0 +1,22 @@
+import java.util.Scanner;
+class Main {
+  public static void main(String[] args) {
+    Scanner entrada= new Scanner(System.in);
+    int n;
+    System.out.println("ingrese cantidad de personas");
+    n=entrada.nextInt();
+    //Me queda guardado un salto de linea despues del numero ingresado, 
+    por eso si no pongo lo que sigue no me deja ingresar la primer palabra que pido
+    String saltoDeLinea = entrada.nextLine();
+   String[] arreglo = new String[n];
+   
+   for (int i=0;i<arreglo.length;i++){
+     System.out.println("ingrese nombre");
+
+     arreglo[i]=entrada.nextLine();
+     
+     System.out.println("posicion" + i+"nombre"+arreglo[i]);
+   }
+   
+  }
+}
