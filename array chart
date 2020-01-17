@@ -1,0 +1,13 @@
+import java.util.Scanner;
+class Main {
+  public static void main(String[] args) {
+    Scanner entrada= new Scanner(System.in);
+   char[] arreglo = {'A','V','A','J'};
+   
+   for (int i=arreglo.length-1;i>=0;i--){
+     
+   System.out.println("posicion" + i+"valor"+arreglo[i]);
+   }
+    
+  }
+}
