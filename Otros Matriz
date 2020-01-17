@@ -1,0 +1,180 @@
+17) Crear una matriz n x n y llenarla con los números que el usuario desee.
+Sume todos los números que componga la columna 1 y muestre el
+resultado por pantalla.
+
+import java.util.Scanner;
+class Main {
+  public static void main(String[] args) {
+     Scanner entrada= new Scanner(System.in);
+  
+  int sumacolumna1=0;
+  System.out.print("Ingrese tamaño de la matriz cuadrada");
+  int n=entrada.nextInt();
+  int[][] matrizPrueba=crearMatriz(n);
+  mostrarMatriz(matrizPrueba);
+
+  for (int i=0;i<matrizPrueba.length;i++){
+       for (int j=0;j<matrizPrueba[i].length;j++){
+         if (j==1){
+           sumacolumna1=sumacolumna1+matrizPrueba[i][j];
+         }
+       }
+     }
+  
+  System.out.println("La suma de la columna 1 es: "+ sumacolumna1);
+  }
+  //Recordar que las funciones se definen AFUERA del public static void
+  public static int[][] crearMatriz(int tamaño)
+  {
+     Scanner entrada= new Scanner(System.in);
+     int[][] matriz= new int[tamaño][tamaño];
+     for (int i=0;i<tamaño;i++){
+       for (int j=0;j<tamaño;j++){
+         System.out.println("Ingrese numero ");
+         matriz[i][j]=entrada.nextInt();
+       }
+     }
+    return matriz;
+  }
+
+  static void mostrarMatriz(int[][] a)
+  {
+    System.out.println("La Matriz es");
+    for (int i=0;i<a.length;i++){
+      for (int j=0;j<a[i].length;j++){
+      System.out.print(a[i][j] + "  ");
+      }
+      System.out.println("");
+    }
+  }
+
+}
+
+
+18) Diseñar un algoritmo que recorra las butacas de una sala de cine y
+determine cuántas butacas desocupadas hay en la sala. Suponga que
+inicialmente tiene un array (arreglo) con valores booleanos que si es
+verdadero implica que está ocupada y si es falso la butaca está
+desocupada. Tenga en cuenta que el array deberá ser creado e
+inicializado al principio del algoritmo.
+
+
+import java.util.Scanner;
+import java.util.Random;
+
+class Main {
+  public static void main(String[] args) {
+     Scanner entrada= new Scanner(System.in);
+  
+  int desocupadas=0;
+  System.out.print("Ingrese cuantas filas hay en el cine");
+  int filas=entrada.nextInt();
+  System.out.print("Ingrese cuantas butacas hay por fila");
+  int butacas=entrada.nextInt();
+  
+  Boolean[][] matrizPrueba=crearMatriz(filas,butacas);
+  mostrarMatriz(matrizPrueba);
+
+  for (int i=0;i<matrizPrueba.length;i++){
+       for (int j=0;j<matrizPrueba[i].length;j++){
+         if (matrizPrueba[i][j]==false){
+           desocupadas=desocupadas+1;
+        }
+       }
+     }
+  
+  System.out.print("En el cine hay "+desocupadas+" butacas desocupadas");
+  
+  }
+  //Recordar que las funciones se definen AFUERA del public static void
+  public static Boolean[][] crearMatriz(int n, int c)
+  {
+     Scanner entrada= new Scanner(System.in);
+     Boolean [][] matriz= new Boolean [n][c];
+     for (int i=0;i<n;i++){
+       for (int j=0;j<c;j++){
+           Random randomno = new Random();
+           matriz[i][j]=randomno.nextBoolean();
+       }
+     }
+    return matriz;
+  }
+
+  static void mostrarMatriz(Boolean[][] a)
+  {
+    System.out.println("La Matriz es");
+    for (int i=0;i<a.length;i++){
+      for (int j=0;j<a[i].length;j++){
+      System.out.print(a[i][j] + "  ");
+      }
+      System.out.println("");
+    }
+  }
+
+}
+
+19) Array de 2 dimensiones. Una escuela tiene un total de 3 aulas con la
+siguiente capacidad:
+
+Identificador Aula Cantidad de Bancos del Aula
+Azul 40
+Verde 35
+Amarillo 30
+
+Sabiendo la cantidad de bancos de cada aula, el usuario deberá ingresar
+la cantidad de alumnos inscriptos para cursar tercer grado y el sistema
+deberá determinar qué aula (Azul, Verde o Amarillo) es la indicada para la
+cantidad ingresada. La escuela ya sabe que la máxima capacidad de sus
+aulas es de 40 alumnos, por lo tanto, la cantidad de alumnos inscriptos
+que ingresa el usuario siempre será un número menor o igual a 40. Se
+espera que el aula asignada sea la que deje menos bancos libres.
+
+ 
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+     Scanner entrada= new Scanner(System.in);
+  
+  int cantidadDeAlumnos;
+  String aula="vacio";
+  String[][] aulas=crearMatriz();
+  mostrarMatriz(aulas);
+ 
+  System.out.println("¿Cuántos alumnos inscriptos hay?");
+  cantidadDeAlumnos=entrada.nextInt();
+    for (int j=1;j<4;j++){
+         int cantalumnos = Integer.parseInt(aulas[j][1]);
+         if (cantidadDeAlumnos<=cantalumnos){
+           aula=aulas[j][0];
+        }
+       }
+    System.out.println("El aula asignada es "+ aula);
+
+
+  }
+  
+  
+  
+  
+  //Recordar que las funciones se definen AFUERA del public static void
+  public static String[][] crearMatriz()
+  {
+     Scanner entrada= new Scanner(System.in);
+     String [][] matriz={{"Identificador Aula","Cantidad de bancos"},{"Azul","40"},{"Verde","35"},{"Amarillo","30"}};
+       
+    return matriz;
+  }
+
+  static void mostrarMatriz(String[][] a)
+  {
+    System.out.println("La Matriz es");
+    for (int i=0;i<a.length;i++){
+      for (int j=0;j<a[i].length;j++){
+      System.out.print(a[i][j] + "  ");
+      }
+      System.out.println("");
+    }
+  }
+
+}
