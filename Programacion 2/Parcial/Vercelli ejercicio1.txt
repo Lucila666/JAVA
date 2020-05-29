@@ -1,0 +1,105 @@
+Ejercicio N 1:
+
+public static void EliminarRepetidos(ColaTDA original){
+        ColaTDA aux=new Colas();
+	aux.InicializarCola();
+        int valor=-1; //Considero colas con numeros positivos
+       
+       while(original.ColaVacia()==false){
+//Si el numero es distinto al anterior lo tomo para la nueva cola
+            if (valor!=original.Primero()){
+                valor=original.Primero();    
+                aux.Acolar(original.Primero());
+                original.Desacolar(); 
+            }
+//Si el numero es igual al anterior lo descarto
+	    else{ 
+                original.Desacolar();
+            }
+        }
+        
+        PasarCola(aux,original);
+        System.out.println("Fin procedimiento");
+    }
+
+
+
+b) O(n)
+
+
+
+
+
+
+
+
+
+Anexo (Codigo Completo):
+
+package primerparcial;
+import Interfaces.*;
+import Implementaciones.*;
+
+public class PrimerParcial {
+//Ejercicio N 1
+    public static void main(String[] args) {
+        ColaTDA entrada = new Colas();
+        entrada.InicializarCola();
+        entrada.Acolar(1);
+        entrada.Acolar(2);
+        entrada.Acolar(2);
+        entrada.Acolar(2);
+        entrada.Acolar(3);
+        entrada.Acolar(1);
+        entrada.Acolar(3);
+        entrada.Acolar(5);
+        entrada.Acolar(3);
+        entrada.Acolar(3);
+        entrada.Acolar(2);
+        EliminarRepetidos(entrada);
+        ImprimirCola(entrada);
+    }
+    
+    public static void EliminarRepetidos(ColaTDA original){
+        ColaTDA aux=new Colas();
+	aux.InicializarCola();
+        int valor=-1;
+        
+       while(original.ColaVacia()==false){
+            if (valor!=original.Primero()){
+                valor=original.Primero();    
+                aux.Acolar(original.Primero());
+                original.Desacolar();
+            }else{
+                original.Desacolar();
+            }
+        }
+        
+        PasarCola(aux,original);
+        System.out.println("Fin procedimiento");
+    }
+    public static void PasarCola(ColaTDA origen, ColaTDA destino){
+            
+            while (!origen.ColaVacia()){
+               
+                destino.Acolar(origen.Primero());
+                origen.Desacolar();
+                 
+            }
+    }  
+    public static void ImprimirCola(ColaTDA cola){
+        ColaTDA aux=new Colas();
+	aux.InicializarCola();
+            if (!cola.ColaVacia()){
+		while(!cola.ColaVacia()){
+                    System.out.println(cola.Primero());
+                    aux.Acolar(cola.Primero());
+                    cola.Desacolar();
+		}
+		PasarCola(aux,cola);
+                System.out.println("Fin cola");
+		}
+                else
+                    System.out.println("Cola Vacia");
+    }
+}

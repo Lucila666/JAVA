@@ -1,0 +1,127 @@
+Ejercicio N2:
+
+public static DiccionarioSimple FusionDiccionarios(DiccionarioSimpleTDA D1, DiccionarioSimpleTDA D2){
+        DiccionarioSimple D = new DiccionarioSimple();
+*****************DiccionarioSimpleTDA D=
+        D.InicializarDiccionario();
+       
+        ConjuntosTDA claves1= new Conjuntos();
+        claves1.InicializarConjunto();
+        ConjuntosTDA claves2= new Conjuntos();
+        claves2.InicializarConjunto();
+        int clave;
+        int valor;
+        int v1;
+        int v2;
+        
+       claves1= D1.Claves();
+       claves2=D2.Claves();
+        //Empiezo utilizando las claves del primer diccionario
+        while (claves1.ConjuntoVacio()==false ){
+           clave=claves1.Elegir();
+           v1=D1.Recuperar(clave);
+           claves1.Sacar(clave);
+           //Verifico si esa clave tambien esta en el segundo diccionario, si esta voy a comparar ambos valores
+           if (claves2.Pertenece(clave)){
+               v2=D2.Recuperar(clave);
+               claves2.Sacar(clave);
+               if (v2>v1){
+                   valor=v1;
+               }else{
+                   valor=v2;
+               }
+               
+            }else{ //Si no esta me quedo con el valor del primer diccionario
+               valor=v1;
+           }
+           D.Agregar(clave, valor);
+        } //Debo verificar si me quedo alguna clave en el segundo diccionario.
+        while (claves2.ConjuntoVacio()==false ){
+           clave=claves2.Elegir();
+           v2=D2.Recuperar(clave);
+           claves2.Sacar(clave);
+           D.Agregar(clave, v2);
+           //Si quedaba la clave es porque no estaba en el primero por eso no comparo.
+        }
+        return D;
+    }
+
+b) O(n)
+*********Tengo recuperar y agregar que son de costo lineal, asi que el costo es cuadratico
+
+
+Anexo (Codigo Completo):
+
+
+package primerparcial;
+import Interfaces.*;
+import Implementaciones.*;
+
+public class PrimerParcial {
+//Ejercicio N 1
+    public static void main(String[] args) {
+        DiccionarioSimple diccionario1 = new DiccionarioSimple();
+        DiccionarioSimple diccionario2 = new DiccionarioSimple();
+        DiccionarioSimple diccionario = new DiccionarioSimple();
+        
+        diccionario1.InicializarDiccionario();
+        diccionario2.InicializarDiccionario();
+        diccionario.InicializarDiccionario();
+        
+        diccionario1.Agregar(3, 3);
+        diccionario1.Agregar(2, 8);
+        diccionario1.Agregar(4, 7);
+        
+        diccionario2.Agregar(3, 3);
+        diccionario2.Agregar(1, 5);
+        diccionario2.Agregar(7, 9);
+        diccionario2.Agregar(2, 9);
+        
+        diccionario=FusionDiccionarios(diccionario1,diccionario2);
+    }
+    
+    public static DiccionarioSimple FusionDiccionarios(DiccionarioSimpleTDA D1, DiccionarioSimpleTDA D2){
+        DiccionarioSimple D = new DiccionarioSimple();
+        D.InicializarDiccionario();
+       
+        ConjuntosTDA claves1= new Conjuntos();
+        claves1.InicializarConjunto();
+        ConjuntosTDA claves2= new Conjuntos();
+        claves2.InicializarConjunto();
+        int clave;
+        int valor;
+        int v1;
+        int v2;
+        
+       claves1= D1.Claves();
+       claves2=D2.Claves();
+        //Empiezo utilizando las claves del primer diccionario
+        while (claves1.ConjuntoVacio()==false ){
+           clave=claves1.Elegir();
+           v1=D1.Recuperar(clave);
+           claves1.Sacar(clave);
+           //Verifico si esa clave tambien esta en el segundo diccionario, si esta voy a comparar ambos valores
+           if (claves2.Pertenece(clave)){
+               v2=D2.Recuperar(clave);
+               claves2.Sacar(clave);
+               if (v2>v1){
+                   valor=v1;
+               }else{
+                   valor=v2;
+               }
+               
+            }else{ //Si no esta me quedo con el valor del primer diccionario
+               valor=v1;
+           }
+           D.Agregar(clave, valor);
+        } //Debo verificar si me quedo alguna clave en el segundo diccionario.
+        while (claves2.ConjuntoVacio()==false ){
+           clave=claves2.Elegir();
+           v2=D2.Recuperar(clave);
+           claves2.Sacar(clave);
+           D.Agregar(clave, v2);
+           //Si quedaba la clave es porque no estaba en el primero por eso no comparo.
+        }
+        return D;
+    }
+}

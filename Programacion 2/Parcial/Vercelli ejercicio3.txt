@@ -1,0 +1,119 @@
+Ejercicio 3:
+En la resolucion de este ejercicio asumi que conozco la dimension del universo acotado.
+
+public static int[] UnirConjuntos(int[] A, int[] B){
+             
+        int[] union = new int[7];
+        for (int i=0; i<7; i++){
+            if (A[i]==1 || B[i]==1){
+                union[i]=1;
+            }else{
+                union[i]=0;
+            }
+        }
+        return union;
+    }
+    public static int[] IntersectarConjuntos(int[] A, int[] B){
+            
+        int[] union = new int[7];
+        for (int i=0; i<7; i++){
+            if (A[i]==1 && B[i]==1){
+                union[i]=1;
+            }else{
+                union[i]=0;
+            }
+        }
+        return union;
+    }
+
+
+
+
+c) Ambos metodos tienen costo O(n).
+
+
+Anexo (Codigo Completo):
+
+package primerparcial;
+import Interfaces.*;
+import Implementaciones.*;
+
+public class PrimerParcial {
+//Ejercicio N 1
+    public static void main(String[] args) {
+       ConjuntosTDA A = new Conjuntos();
+       ConjuntosTDA B = new Conjuntos();
+       ConjuntosTDA interseccion = new Conjuntos();
+       int[] uno;
+       int[] dos;
+       int[] union;
+       int[] intersectar;
+       
+       A.InicializarConjunto();
+       B.InicializarConjunto();
+       
+       A.Agregar(0);
+       A.Agregar(2);
+       A.Agregar(5);
+       A.Agregar(6);
+       
+       B.Agregar(1);
+       B.Agregar(2);
+       B.Agregar(4);
+       B.Agregar(6);
+       
+       uno= ArmarVector(A);
+       ImprimirVector(uno);
+       dos= ArmarVector(B);
+       ImprimirVector(dos);
+       
+       union= UnirConjuntos(uno,dos);
+       ImprimirVector(union);
+       intersectar= IntersectarConjuntos(uno,dos);
+       ImprimirVector(intersectar);
+       
+    }
+    //Asumo que conozco la dimension del universo acotado
+    public static int[] ArmarVector(ConjuntosTDA origen){
+        int[] aux = new int[7];
+        for (int i=0; i<7; i++){
+           if (origen.Pertenece(i)){
+               aux[i]=1;
+           }else{
+               aux[i]=0;
+           }
+        }
+        return aux;
+    }
+    
+    public static int[] UnirConjuntos(int[] A, int[] B){
+             
+        int[] union = new int[7];
+        for (int i=0; i<7; i++){
+            if (A[i]==1 || B[i]==1){
+                union[i]=1;
+            }else{
+                union[i]=0;
+            }
+        }
+        return union;
+    }
+    public static int[] IntersectarConjuntos(int[] A, int[] B){
+            
+        int[] union = new int[7];
+        for (int i=0; i<7; i++){
+            if (A[i]==1 && B[i]==1){
+                union[i]=1;
+            }else{
+                union[i]=0;
+            }
+        }
+        return union;
+    }
+    public static void ImprimirVector (int[] imprimir){
+        for (int i=0; i<7; i++){
+        System.out.println(imprimir[i]);
+    }
+        System.out.println("fin vector");
+    }
+}

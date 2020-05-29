@@ -1,0 +1,86 @@
+Ejercicio 4:
+
+public static PilaLD SacarDuplicado (PilaLD x){
+        ConjuntosTDA auxiliar = new Conjuntos();
+        auxiliar.InicializarConjunto();
+        PilaLD extra = new PilaLD();
+        extra.InicializarPila();
+        while (x.PilaVacia()!=true){
+             if (auxiliar.Pertenece(x.Tope())==false){
+                 auxiliar.Agregar(x.Tope());
+                 extra.Apilar(x.Tope());
+                 
+             }
+             x.Desapilar();
+        }
+        extra=InvertirPila(extra);
+        return extra;
+    }
+
+b) O(n)
+
+Anexo (Codigo Completo):
+
+package primerparcial;
+import Interfaces.*;
+import Implementaciones.*;
+
+public class PrimerParcial {
+//Ejercicio N 1
+    public static void main(String[] args) {
+       PilaLD ejemplo = new PilaLD();
+       PilaLD pilaFinal = new PilaLD();
+       ejemplo.InicializarPila();
+       ejemplo.Apilar(3);
+       ejemplo.Apilar(7);
+       ejemplo.Apilar(7);
+       ejemplo.Apilar(5);
+       ejemplo.Apilar(1);
+       ejemplo.Apilar(3);
+       ejemplo.Apilar(3);
+       ejemplo.Apilar(1);
+       
+       pilaFinal=SacarDuplicado(ejemplo);
+       ImprimirPila(pilaFinal);
+    }
+    public static PilaLD SacarDuplicado (PilaLD x){
+        ConjuntosTDA auxiliar = new Conjuntos();
+        auxiliar.InicializarConjunto();
+        PilaLD extra = new PilaLD();
+        extra.InicializarPila();
+        while (x.PilaVacia()!=true){
+             if (auxiliar.Pertenece(x.Tope())==false){
+                 auxiliar.Agregar(x.Tope());
+                 extra.Apilar(x.Tope());
+                 
+             }
+             x.Desapilar();
+        }
+        extra=InvertirPila(extra);
+        return extra;
+    }
+    public static PilaLD InvertirPila(PilaLD origen){
+            PilaLD aux=new PilaLD();
+            aux.InicializarPila();
+            while (!origen.PilaVacia()){
+                aux.Apilar(origen.Tope());
+                origen.Desapilar();
+            }
+            return aux;
+        }
+    public static void ImprimirPila(PilaLD pila){
+        PilaLD aux=new PilaLD();
+	aux.InicializarPila();
+            if (!pila.PilaVacia()){
+		while(!pila.PilaVacia()){
+                    System.out.println(pila.Tope());
+                    aux.Apilar(pila.Tope());
+                    pila.Desapilar();
+		}
+		
+                System.out.println("Fin pila");
+		}
+                else
+                    System.out.println("Pila Vacia");
+    }
+}
